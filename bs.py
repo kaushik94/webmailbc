@@ -3,9 +3,9 @@ from mechanize import Browser
 import requests
 import re
 
-GMAIL_ID = 'your_gmail_id'
-WEBMAIL_ID = 'webmail id'
-WEBMAIL_PASS = 'webmail password'
+GMAIL_ID = 'pc.priyansh@gmail.com'
+WEBMAIL_ID = '201201243'
+WEBMAIL_PASS = 'dirtydevil783'
 
 url = "webmail.daiict.ac.in"
 master = 'https://webmail.daiict.ac.in/'
@@ -44,7 +44,7 @@ for message in messages:
                 br.form['to'] = GMAIL_ID
                 #print cr.form 
                 br.submit()
-                #print "done", id_
+                print "done", id_
                 """
                 br.open(message_link)
                 br.select_form(nr=1)
