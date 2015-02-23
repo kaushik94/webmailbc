@@ -1,3 +1,8 @@
+GMAIL_ID = 'kaushik.varanasi1@gmail.com'
+WEBMAIL_ID = '201201111'
+WEBMAIL_PASS = 'twinparadox'
+
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -9,9 +14,9 @@ from selenium.common.exceptions import TimeoutException
 driver = webdriver.Firefox()
 content = driver.get("https://webmail.daiict.ac.in/zimbra/")
 usname = driver.find_element_by_id('username')
-usname.send_keys('201201111')
+usname.send_keys(WEBMAIL_ID)
 password = driver.find_element_by_id('password')
-password.send_keys('twinparadox')
+password.send_keys(WEBMAIL_PASS)
 password.send_keys(Keys.RETURN)
 
 
@@ -19,10 +24,6 @@ from bs4 import BeautifulSoup as bss
 from mechanize import Browser
 import requests
 import re
-
-GMAIL_ID = 'kaushik.varanasi1@gmail.com'
-WEBMAIL_ID = '201201111'
-WEBMAIL_PASS = 'twinparadox'
 
 url = "webmail.daiict.ac.in"
 master = 'https://webmail.daiict.ac.in/'
