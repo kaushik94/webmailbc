@@ -20,7 +20,7 @@ pool = bss(response)
 links = []
 messages = pool.find_all('tbody', {'id':'mess_list_tbody'})[0]
 messages = messages.findAll('a',href=True)
-print len(messages)
+#print len(messages)
 prev = 'https://webmail.daiict.ac.in/zimbra/h/search?si=1&so=0&sc=4986&st=message&id='
 next = '&xim=1&action=paneView'
 
@@ -30,25 +30,24 @@ for message in messages:
         opened = br.open(prev+id_+next)
         response = br.response().read()
         response = bss(response)
-        """X = re.findall('doc.write(.*?)doc.close', str(response), re.DOTALL)
-        if len(X):
-                X = X[0]
-                #print X
-                X = X[1:-5]
-                html_ = ('u'+X).decode('utf-8')
-                save = html2text.html2text(html_)
-                print save
-        """
         forward = response.findAll('a', {'id':'OPFORW'})
         if len(forward):
                 forward = forward[0]
                 link = forward['href']
                 #print link
-                br.open(link)
-                #print br.response().read()
-                br.select_form(name='composeForm')
-                #print br.form
-                br.form['to'] = 'kaushik.varanasi1@gmail.com'
-                print br.form 
-                br.submit()
-                print "done"
+                cr = Browser()
+                cr.set_handle_robots(False)
+                cr.open(link)
+                #print cr.response().read()
+                cr.select_form(name='composeForm')
+                #print cr.form
+                cr.form['to'] = 'kaushik.varanasi1@gmail.com'
+                #print cr.form 
+                cr.submit()
+                print "done", id_
+r = br.open(master)
+r = bss(r.read())
+br.select_form(name='zform')
+check = br.find_control(id='OPCHALL')
+check.selected = True
+br.submit()
