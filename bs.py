@@ -3,9 +3,9 @@ from mechanize import Browser
 import requests
 import re
 
-GMAIL_ID = 'gmail id'
-WEBMAIL_ID = 'college id'
-WEBMAIL_PASS = 'webmail password'
+GMAIL_ID = 'lahinantar@gmail.com'
+WEBMAIL_ID = '201201090'
+WEBMAIL_PASS = 'newsense'
 
 url = "webmail.daiict.ac.in"
 master = 'https://webmail.daiict.ac.in/'
@@ -26,8 +26,10 @@ messages = messages.findAll('a',href=True)
 prev = 'https://webmail.daiict.ac.in/zimbra/h/search?si=1&so=0&sc=4986&st=message&id='
 next = '&xim=1&action=paneView'
 
+queue = []
 
 for message in messages:
+        print message['id']
         something, id_ = re.findall('id=(.*?)&', str(message))
         message_link = prev+id_+next  
         opened = br.open(message_link)
@@ -41,7 +43,7 @@ for message in messages:
                 #print cr.response().read()
                 br.select_form(name='composeForm')
                 #print cr.form
-                br.form['to'] = GMAIL_ID
+                #br.form['to'] = GMAIL_ID
                 #print cr.form 
                 br.submit()
                 print "done", id_
