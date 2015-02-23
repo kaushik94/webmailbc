@@ -3,9 +3,9 @@ from mechanize import Browser
 import requests
 import re
 
-GMAIL_ID = 'pc.priyansh@gmail.com'
-WEBMAIL_ID = '201201243'
-WEBMAIL_PASS = 'dirtydevil783'
+GMAIL_ID = 'gmail id'
+WEBMAIL_ID = 'college id'
+WEBMAIL_PASS = 'webmail password'
 
 url = "webmail.daiict.ac.in"
 master = 'https://webmail.daiict.ac.in/'
@@ -45,32 +45,3 @@ for message in messages:
                 #print cr.form 
                 br.submit()
                 print "done", id_
-                """
-                br.open(message_link)
-                br.select_form(nr=1)
-                br.form.set_all_readonly(False)
-                delete = br.find_control(id='SOPDELETE')
-                delete.checked = True
-                br.click(type='submit', id='SOPDELETE')
-                print delete
-                br.submit()
-                """
-
-"""
-r = br.open(master)
-r = bss(r.read())
-br.select_form(name='zform')
-br.form.set_all_readonly(False)
-check = br.find_control(id='OPCHALL')
-print check
-check.items[0].selected = True
-print check
-print "checked"
-delete = br.form.find_control(id='SOPDELETE')
-print delete
-#br.form.click(id='OPCHALL')
-print check
-br.click(id='SOPDELETE')
-br.submit()
-print "deleted"
-"""
